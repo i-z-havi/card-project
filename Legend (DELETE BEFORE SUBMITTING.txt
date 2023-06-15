@@ -1,0 +1,5 @@
+"cards" are gained from usecards.js hook
+
+card delete dialogue (pop up, yes/no) is in cardactionbar
+
+use url data for search?
