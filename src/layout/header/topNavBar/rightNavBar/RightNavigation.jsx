@@ -6,13 +6,15 @@ import DarkModeIcon from "@mui/icons-material/DarkMode";
 import { useUser } from "../../../../users/providers/UserProvider";
 import Logged from "./Logged";
 import NotLogged from "./NotLogged";
+import Search from "./Search";
+
 
 export default function RightNavigation() {
   const { isDark, toggleDark } = useTheme();
   const { user } = useUser();
   return (
     <Box sx={{ display: { md: "inline-flex" } }}>
-      
+      <Search/>
       <IconButton sx={{ marginLeft: 1 }} onClick={toggleDark}>
         {isDark ? <LightModeIcon /> : <DarkModeIcon />}
       </IconButton>
