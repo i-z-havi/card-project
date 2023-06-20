@@ -1,63 +1,74 @@
-import React from "react";
-import ROUTES from "../../routes/routesModel";
-import useForm from "../../forms/hooks/useForm";
 import { Container } from "@mui/material";
-import Form from "../../forms/components/Form";
-import Input from "../../forms/components/Input";
+import React from "react";
+import PageHeader from "../../components/PageHeader";
+import useForm from "../../forms/hooks/useForm";
 import initialLoginForm from "../helpers/initialForms/initialLoginForm";
 import loginSchema from "../models/joi-schema/loginSchema";
-import { Navigate } from "react-router-dom";
+import ROUTES from "../../routes/routesModel";
+import Form from "../../forms/components/Form";
+import Input from "../../forms/components/Input";
 import { useUser } from "../providers/UserProvider";
 import useUsers from "../hooks/useUsers";
-
+import { Navigate } from "react-router-dom";
 
 export default function LoginPage() {
-  const {user}=useUser(); //this gets user val from context
-  const {handleLogin}=useUsers(); //gets login hook from useUsers hooks
-  
-  const { data, errors, ...rest } = useForm(
+  const { user } = useUser();
+  const { handleLogin } = useUsers();
+  //איך אנחנו בונים טופס עם הכלים שבנינו בשיעור קודם
+  //החלק הלוגי:
+  //נשתמש בהוק יוזפורם
+
+  //החלק הויזואלי
+  //נשתמש בקומפוננטת טופס שיצרנו
+  //ונכניס לתוכה קומפוננטות אינפוט שיצרנו
+
+  const { value, ...rest } = useForm(
     initialLoginForm,
     loginSchema,
     handleLogin
   );
-
-  if(user){
-    return <Navigate replace to={ROUTES.ROOT}/>
-  }
+  if (user) return <Navigate replace to={ROUTES.CARDS} />;
 
   return (
-    <Container
-      sx={{
-        pt: 8,
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Form
-        title="Login Form"
-        onSubmit={rest.onSubmit}
-        onReset={rest.handleReset}
-        styles={{ maxWidth: "450px" }}
-        validateForm={rest.validateForm}
-        to={ROUTES.ROOT}
+    <Container >
+      <PageHeader 
+        title="Welcome to the Login page"
+        subtitle="Here you can log in"
+      />
+      <Container
+        sx={{
+          paddingTop: 8,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
       >
-        <Input
-          label="email"
-          name="email"
-          data={data}
-          error={errors.email}
-          onChange={rest.handleChange}
-        />
-        <Input
-          label="password"
-          name="password"
-          data={data}
-          error={errors.password}
-          onChange={rest.handleChange}
-          //type="password"
-        />
-      </Form>
+        <Form
+          title="login"
+          styles={{ maxWidth: "450px" }}
+          to={ROUTES.CARDS}
+          onSubmit={rest.onSubmit}
+          onReset={rest.handleReset}
+          onChange={rest.validateForm}
+        >
+          <Input
+            label="email"
+            name="email"
+            type="email"
+            error={value.errors.email}
+            onChange={rest.handleChange}
+            data={value.data}
+          />
+          <Input
+            label="password"
+            name="password"
+            type="password"
+            error={value.errors.password}
+            onChange={rest.handleChange}
+            data={value.data}
+          />
+        </Form>
+      </Container>
     </Container>
   );
 }

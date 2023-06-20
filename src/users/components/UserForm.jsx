@@ -1,4 +1,3 @@
-
 import React from "react";
 import { func, object, string } from "prop-types";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -11,7 +10,7 @@ import ROUTES from "../../routes/routesModel";
 const UserForm = ({
   onSubmit,
   onReset,
-  validateForm,
+  onFormChange,
   title,
   errors,
   data,
@@ -22,7 +21,7 @@ const UserForm = ({
     <Form
       onSubmit={onSubmit}
       onReset={onReset}
-      validateForm={validateForm}
+      onChange={onFormChange}
       styles={{ maxWidth: "800px" }}
       title={title}
       to={ROUTES.CARDS}
@@ -165,7 +164,7 @@ const UserForm = ({
 UserForm.propTypes = {
   onSubmit: func.isRequired,
   onReset: func.isRequired,
-  validateForm: func.isRequired,
+  onFormChange: func.isRequired,
   title: string.isRequired,
   errors: object.isRequired,
   data: object.isRequired,

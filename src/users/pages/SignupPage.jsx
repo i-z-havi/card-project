@@ -1,49 +1,46 @@
-import React from "react";
-import signupSchema from "../models/joi-schema/signupSchema";
-import useForm from "../../forms/hooks/useForm";
-import useUsers from "../hooks/useUsers";
-import { useUser } from "../providers/UserProvider";
-import initialSignupForm from "../helpers/initialForms/initialSignupForm";
-import { Navigate } from "react-router-dom";
 import { Container } from "@mui/material";
+import React from "react";
+import { Navigate } from "react-router-dom";
+import useForm from "../../forms/hooks/useForm";
 import ROUTES from "../../routes/routesModel";
 import UserForm from "../components/UserForm";
+import initialSignupForm from "../helpers/initialForms/initialSignupForm";
+import useUsers from "../hooks/useUsers";
+import signupSchema from "../models/joi-schema/signupSchema";
+import { useUser } from "../providers/UserProvider";
 
 export default function SignupPage() {
-  const { user } = useUser();
   const { handleSignup } = useUsers();
-  const { data, errors, ...rest } = useForm(
+
+  const { value, ...rest } = useForm(
     initialSignupForm,
     signupSchema,
     handleSignup
   );
 
-  if (user) {
-    return <Navigate replace to={ROUTES.ROOT} />;
-  }
+  const { user } = useUser();
+
+  if (user) return <Navigate replace to={ROUTES.CARDS} />;
 
   return (
-    
     <Container
       sx={{
-        pt: 8,
+        paddingTop: 8,
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
       }}
     >
       <UserForm
-      onSubmit={rest.onSubmit}
-      onReset={rest.onReset}
-      validateForm={rest.validateForm}
-      title={"Registration Form"}
-      errors={errors}
-      data={data}
-      onInputChange={rest.handleChange}
-      setData={rest.setData}
-      >
-      </UserForm>
-
+        onSubmit={rest.onSubmit}
+        onReset={rest.handleReset}
+        onFormChange={rest.validateForm}
+        title="register form"
+        errors={value.errors}
+        data={value.data}
+        onInputChange={rest.handleChange}
+        setData={rest.setData}
+      />
     </Container>
   );
 }

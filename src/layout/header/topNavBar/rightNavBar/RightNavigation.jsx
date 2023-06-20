@@ -7,6 +7,7 @@ import { useUser } from "../../../../users/providers/UserProvider";
 import Logged from "./Logged";
 import NotLogged from "./NotLogged";
 import Search from "./Search";
+import MoreButton from "./MoreButton";
 
 
 export default function RightNavigation() {
@@ -18,8 +19,9 @@ export default function RightNavigation() {
       <IconButton sx={{ marginLeft: 1 }} onClick={toggleDark}>
         {isDark ? <LightModeIcon /> : <DarkModeIcon />}
       </IconButton>
-
       {user ? <Logged /> : <NotLogged />}
+      <MoreButton/>
     </Box>
+    
   );
 }

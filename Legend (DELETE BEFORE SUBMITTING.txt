@@ -2,4 +2,14 @@
 
 card delete dialogue (pop up, yes/no) is in cardactionbar
 
-use url data for search?
+
+
+TO DO:
+
+see why the menu you get when clicking on the profile isnt updating correctly
+
+normalize cards when you make them! update function in usecards hook
+
+use url data for search?-- DONE (might make a hook to make it cleaner + reuse code)
+
+get updated useCards hook from github! --DONE

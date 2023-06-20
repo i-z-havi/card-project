@@ -4,6 +4,7 @@ import Router from "./routes/Router";
 import ThemeProvider from "./providers/ThemeProvider";
 import SnackbarProvider from "./providers/SnackBarProvider";
 import UserProvider from "./users/providers/UserProvider";
+import { MenuProvider } from "./layout/header/topNavBar/menu/MenuProvider";
 
 function App() {
   return (
@@ -12,9 +13,11 @@ function App() {
         <UserProvider>
         <SnackbarProvider>
           <ThemeProvider>
-            <Layout>
-              <Router />
-            </Layout>
+            <MenuProvider>
+              <Layout>
+                <Router />
+              </Layout>
+            </MenuProvider>
           </ThemeProvider>
         </SnackbarProvider>
         </UserProvider>

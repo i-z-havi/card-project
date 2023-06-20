@@ -1,32 +1,21 @@
-import { Avatar, Box, IconButton, Tooltip } from "@mui/material";
-import LogoutIcon from "@mui/icons-material/Logout";
 import React from "react";
-import useUsers from "../../../../users/hooks/useUsers";
+import Tooltip from "@mui/material/Tooltip";
+import IconButton from "@mui/material/IconButton";
+import Avatar from "@mui/material/Avatar";
 import { useMenu } from "../menu/MenuProvider";
-import Menu from "../menu/Menu";
-import MoreButton from "./MoreButton";
 
-export default function Logged() {
-  const { handleLogout } = useUsers();
-  const setOpen =useMenu();
+const Logged = () => {
+  const setOpen = useMenu();
   return (
-    <Box >
-      <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-      <Tooltip title="Open settings">
-        <IconButton sx={{ p: 0, display: "inline-flex", marginLeft: 2 }} onClick={setOpen}>
-          <Avatar alt="Bird" src="/assets/images/businessavatar.png"/>
-        </IconButton>
-      </Tooltip>
-      <Menu/>
+    <Tooltip title="Open settings">
       <IconButton
         sx={{ p: 0, display: "inline-flex", marginLeft: 2 }}
-        onClick={handleLogout}
+        onClick={() => setOpen(true)}
       >
-        <LogoutIcon />
+        <Avatar alt="profile picture" src="/assets/images/businessavatar.png" />
       </IconButton>
-      </Box>
-      <MoreButton/>
-    </Box>
-    
+    </Tooltip>
   );
-}
+};
+
+export default Logged;

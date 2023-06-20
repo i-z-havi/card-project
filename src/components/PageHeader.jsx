@@ -1,14 +1,14 @@
-import { Button, Divider, Typography } from "@mui/material";
+import {  Divider, Typography } from "@mui/material";
 import { string } from "prop-types";
 import React from "react";
 
 export default function PageHeader({ title, subtitle }) {
   return (
     <>
-      <Typography variant="h2" component="h1">
+      <Typography variant="h2" component="h1" align="center">
         {title}
       </Typography>
-      <Typography variant="h5" component="h2">
+      <Typography variant="h5" component="h2" align="center">
         {subtitle}
       </Typography>
       <Divider sx={{ my: 2 }} />

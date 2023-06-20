@@ -10,7 +10,7 @@ const Form = ({
   title,
   onSubmit,
   onReset,
-  validateForm,
+  onChange,
   to,
   color,
   spacing,
@@ -37,7 +37,7 @@ const Form = ({
       </Grid>
 
       <Grid container spacing={1} my={2} direction="row" width="100">
-        <Grid item xs={12} sm={6}> {/*xs and sm decide how much space the grid item takes up on different screen sizes */}
+        <Grid item xs={12} sm={6}>
           <FormButton
             node="cancel"
             color="error"
@@ -58,7 +58,7 @@ const Form = ({
           <FormButton
             node="Submit"
             onClick={onSubmit}
-            disabled={!!validateForm()} //this is a function we get as a prop, is in useForm hook
+            disabled={!!onChange()}
             size="large"
           />
         </Grid>
@@ -74,7 +74,7 @@ Form.propTypes = {
   to: string.isRequired,
   spacing: number,
   onReset: func.isRequired,
-  validateForm: func.isRequired,
+  onChange: func.isRequired,
   title: string.isRequired,
   styles: object,
 };
