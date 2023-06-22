@@ -2,7 +2,7 @@
 
 card delete dialogue (pop up, yes/no) is in cardactionbar
 
-
+make sure to check styles of mui components when nested in custom ones
 
 TO DO:
 
