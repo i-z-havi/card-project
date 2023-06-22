@@ -9,16 +9,18 @@ import Logged from "./Logged";
 
 export default function LeftNavigation() {
   const {user}=useUser();
-  return (
+  return <Box>
+    <LogoIcon />
     <Box sx={{
       display: { xs: "none", md: "inline-flex" },
     }}
 >
-      <LogoIcon />
+      
       <Logo />
       <NavItem to={ROUTES.CARDS} label="Cards" /> 
       <NavItem to={ROUTES.ABOUT} label="About" /> 
       {user?<Logged/>:null}
     </Box>
-  );
+</Box>
+
 }
