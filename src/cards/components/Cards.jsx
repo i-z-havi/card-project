@@ -5,10 +5,14 @@ import BusinessCard from "./card/BusinessCard";
 import cardType from "../models/types/cardType";
 import useCards from "../hooks/useCards";
 import { useUser } from "../../users/providers/UserProvider";
+import { useNavigate } from "react-router-dom";
+import ROUTES from "../../routes/routesModel";
+
 
 export default function Cards({ cards, handleDelete }) {
+  const navigate = useNavigate();
   const handleEdit = (id) => {
-    console.log(`Card ${id} is Edited`);
+    navigate(`${ROUTES.EDIT_CARD}/${id}`)
   };
   const {user}=useUser();
   const {handleLikeCard}=useCards();

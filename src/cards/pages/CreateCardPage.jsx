@@ -1,15 +1,16 @@
 import React from 'react'
 import { Container } from "@mui/material";
 import { useUser } from '../../users/providers/UserProvider'
-import { Navigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 import ROUTES from '../../routes/routesModel'
 import useForm from '../../forms/hooks/useForm'
-import initialCardForm from '../helpers/initialforms/initialCardForm'
 import cardSchema from '../models/joi-schema/cardSchema'
 import useCards from '../hooks/useCards'
 import CardForm from '../components/CardForm';
+import initialCardForm from '../helpers/initialforms/initialCardForm';
 
 export default function CreateCard() {
+  const navigate =useNavigate();
   const {user}=useUser()
   const {handleCreateCard}=useCards();
   const {value,...rest}=useForm(
@@ -17,6 +18,10 @@ export default function CreateCard() {
     cardSchema,
     handleCreateCard
   )
+  const handleSubmit=()=>{
+    rest.onSubmit();
+    navigate(ROUTES.CARDS)
+  }
   if (!user) return <Navigate replace to={ROUTES.CARDS}/>
   
   
@@ -31,7 +36,7 @@ export default function CreateCard() {
     }}
   >
     <CardForm
-      onSubmit={rest.onSubmit}
+      onSubmit={handleSubmit}
       onReset={rest.handleReset}
       onFormChange={rest.validateForm}
       title="Create Card"

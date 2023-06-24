@@ -48,6 +48,7 @@ const useForm = (initialForm, schema, handleSubmit) => {
 
   const onSubmit = useCallback(() => {
     handleSubmit(data);
+
   }, [handleSubmit, data]);
 
   const value = useMemo(() => {

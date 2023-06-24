@@ -11,7 +11,7 @@ export default function CardsPage() {
   const { value, handleGetCards, handleDeleteCard } = useCards();
   const {user}=useUser();
   const [searchParams]=useSearchParams();
-  const search=searchParams.get("titlesearch")
+  const search=searchParams.get("titlesearch");
   useEffect(() => {
     handleGetCards();
   }, []);
