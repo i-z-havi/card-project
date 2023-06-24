@@ -3,14 +3,20 @@ import { arrayOf } from "prop-types";
 import React from "react";
 import BusinessCard from "./card/BusinessCard";
 import cardType from "../models/types/cardType";
+import useCards from "../hooks/useCards";
+import { useUser } from "../../users/providers/UserProvider";
 
 export default function Cards({ cards, handleDelete }) {
   const handleEdit = (id) => {
     console.log(`Card ${id} is Edited`);
   };
-  const handleLike = (id) => {
-    console.log(`Card ${id} is Liked`);
-  };
+  const {user}=useUser();
+  const {handleLikeCard}=useCards();
+
+  const isLiked=(card)=>{
+    if (user) return (card.likes.includes(user.id));
+    else return false;
+  }
 
   return (
     <>
@@ -21,8 +27,9 @@ export default function Cards({ cards, handleDelete }) {
               card={card}
               key={card._id}
               handleDelete={handleDelete}
-              handleLike={handleLike}
+              handleLike={handleLikeCard}
               handleEdit={handleEdit}
+              isLiked={isLiked(card)}
             />
           </Grid>
         ))}

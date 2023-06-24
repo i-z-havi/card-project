@@ -19,9 +19,16 @@ export default function CardActionBar({
   handleDelete,
   handleLike,
   handleEdit,
+  isLiked
 }) {
   
+  const [open, setOpen] = useState(false);
   const {user}=useUser();
+  const [liked, setLiked]=useState(
+    ()=>{if (!user) return false;
+    return isLiked;
+    }
+  );
   const displayEdit=()=>{
   if(!!user){
 
@@ -33,7 +40,10 @@ export default function CardActionBar({
     return false
   }
 
-  const [open, setOpen] = useState(false);
+  const likeCard=(id)=>{
+    setLiked((prev)=>!prev);
+    handleLike(id,liked);
+  }
 
   const handleClickOpen = () => {
     console.log("test")
@@ -43,7 +53,6 @@ export default function CardActionBar({
   const handleClose = () => {
     setOpen(false);
   };
-
 
   return (
     <>
@@ -65,8 +74,8 @@ export default function CardActionBar({
           <IconButton aria-label="Call">
             <CallIcon />
           </IconButton>
-          {user&& <IconButton aria-label="Add to favorite" onClick={() => handleLike(id)}>
-            <FavoriteIcon />
+          {user&& <IconButton aria-label="Add to favorite" onClick={() => likeCard(id)}>
+            <FavoriteIcon color={liked?"error":"inherit"} />
           </IconButton>
         }
         </Box>

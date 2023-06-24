@@ -24,7 +24,7 @@ export default function CardsPage() {
   const filterCards=(cards,search)=>{
     if (cards===null||search===null) return cards;
     return cards.filter((card)=>card.title.includes(search));
-  }
+  } 
 
   return (
     <div>
@@ -36,7 +36,7 @@ export default function CardsPage() {
           title="Cards"
           subtitle="On this page you can find all bussines cards from all categories"
         />
-        <CardsFeedback cards={filterCards(value.cards,search)} isLoading={value.isLoading} error={value.error} handleDelete={handleDelete} />
+        <CardsFeedback cards={filterCards(value.cards,search)} isLoading={value.isLoading} error={value.error} handleDelete={handleDelete}/>
       </Container>
       {user&&<AddCardBtn/>}
     </div>

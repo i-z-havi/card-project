@@ -86,11 +86,13 @@ export default function useCards() {
     }, []);
 
       //handleLikeCard
-  const handleLikeCard = useCallback(async (cardId) => {
+  const handleLikeCard = useCallback(async (cardId,isLiked) => {
     try {
       const card = await changeLikeStatus(cardId);
       requestStatus(false, null, cards, card);
+      if (!isLiked){
       snack("success", "The business card has been Liked");
+      } else snack("success", "The business card has been unliked");
     } catch (error) {
       requestStatus(false, error, null);
     }
@@ -113,7 +115,6 @@ export default function useCards() {
       setLoading(true);
       const normalizedCard=normalizeCard(cardFromClient);
       const card = await createCard(normalizedCard);
-      console.log(card);
       requestStatus(false, null, null, card);
       snack("success", "A new business card has been created");
     } catch (error) {

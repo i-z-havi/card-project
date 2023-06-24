@@ -6,9 +6,13 @@ make sure to check styles of mui components when nested in custom ones
 
 TO DO:
 
-see why the menu you get when clicking on the profile isnt updating correctly
+check card creation house number, make sure its number and not string
 
-normalize cards when you make them! update function in usecards hook
+check maptomodel
+
+see why the menu you get when clicking on the profile isnt updating correctly --DONE
+
+normalize cards when you make them! update function in usecards hook--DONE
 
 use url data for search?-- DONE (might make a hook to make it cleaner + reuse code)
 

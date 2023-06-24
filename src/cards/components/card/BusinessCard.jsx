@@ -13,6 +13,7 @@ export default function BusinessCard({
   handleDelete,
   handleLike,
   handleEdit,
+  isLiked
 }) {
   const navigate = useNavigate();
   return (
@@ -36,6 +37,7 @@ export default function BusinessCard({
           handleDelete={handleDelete}
           handleLike={handleLike}
           handleEdit={handleEdit}
+          isLiked={isLiked}
         />
       </Card>
     </>
