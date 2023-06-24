@@ -23,11 +23,13 @@ import GrandComponent from "../sandbox/context/GrandComponent";
 import TestForm from "../sandbox/forms/TestForm";
 import Login from "../pages/Login";
 import Signin from "../pages/Signin";
+import CreateCard from "../cards/pages/CreateCard";
 
 export default function Router() {
   return (
     <Routes>
       <Route path={ROUTES.ROOT} element={<CardsPage />} />
+      <Route path={ROUTES.CREATE_CARD} element={<CreateCard/>}/>
       <Route path={ROUTES.CARDS} element={<CardsPage />} />
       <Route path={ROUTES.ABOUT} element={<AboutPage />} />
       <Route path={ROUTES.FAV_CARDS} element={<FavCardsPage />} />

@@ -9,7 +9,7 @@ import { useUser } from "../../users/providers/UserProvider";
 
 export default function MyCards() {
   const {user} =useUser();
-  const { cards, isLoading, error, handleGetMyCards, handleDeleteCard } = useCards();
+  const { value, handleGetMyCards, handleDeleteCard } = useCards();
   useEffect(() => {
     handleGetMyCards();
   }, []);
@@ -30,7 +30,7 @@ export default function MyCards() {
           title="Cards"
           subtitle="On this page you can find all bussines cards from all categories"
         />
-        <CardsFeedback cards={cards} isLoading={isLoading} error={error} handleDelete={handleDelete} />
+        <CardsFeedback cards={value.cards} isLoading={value.isLoading} error={value.error} handleDelete={handleDelete} />
       </Container>
     </div>
   );

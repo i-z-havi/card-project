@@ -4,9 +4,12 @@ import PageHeader from "../../components/PageHeader";
 import useCards from "../hooks/useCards";
 import CardsFeedback from "../components/CardsFeedback";
 import { useSearchParams } from "react-router-dom";
+import AddCardBtn from "../components/AddCardBtn";
+import { useUser } from "../../users/providers/UserProvider";
 
 export default function CardsPage() {
-  const { cards, isLoading, error, handleGetCards, handleDeleteCard } = useCards();
+  const { value, handleGetCards, handleDeleteCard } = useCards();
+  const {user}=useUser();
   const [searchParams]=useSearchParams();
   const search=searchParams.get("titlesearch")
   useEffect(() => {
@@ -33,8 +36,9 @@ export default function CardsPage() {
           title="Cards"
           subtitle="On this page you can find all bussines cards from all categories"
         />
-        <CardsFeedback cards={filterCards(cards,search)} isLoading={isLoading} error={error} handleDelete={handleDelete} />
+        <CardsFeedback cards={filterCards(value.cards,search)} isLoading={value.isLoading} error={value.error} handleDelete={handleDelete} />
       </Container>
+      {user&&<AddCardBtn/>}
     </div>
   );
 }

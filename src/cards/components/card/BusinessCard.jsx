@@ -3,7 +3,7 @@ import React from "react";
 import CardHead from "./CardHead";
 import CardBody from "./CardBody";
 import CardActionBar from "./CardActionBar";
-import cardType from "../../models/cardType";
+import cardType from "../../models/types/cardType";
 import { func } from "prop-types";
 import { useNavigate } from "react-router-dom";
 import ROUTES from "../../../routes/routesModel";

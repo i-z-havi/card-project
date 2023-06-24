@@ -2,7 +2,7 @@ import { Grid } from "@mui/material";
 import { arrayOf } from "prop-types";
 import React from "react";
 import BusinessCard from "./card/BusinessCard";
-import cardType from "../models/cardType";
+import cardType from "../models/types/cardType";
 
 export default function Cards({ cards, handleDelete }) {
   const handleEdit = (id) => {

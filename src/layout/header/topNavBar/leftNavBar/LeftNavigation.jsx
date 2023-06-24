@@ -17,7 +17,7 @@ export default function LeftNavigation() {
 >
       
       <Logo />
-      <NavItem to={ROUTES.CARDS} label="Cards" /> 
+      <NavItem to={ROUTES.CARDS} label="Cards"  /> 
       <NavItem to={ROUTES.ABOUT} label="About" /> 
       {user?<Logged/>:null}
     </Box>

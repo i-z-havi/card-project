@@ -1,4 +1,4 @@
-import { BottomNavigation, BottomNavigationAction, Paper } from "@mui/material";
+import { BottomNavigation, BottomNavigationAction, Box, Button, IconButton, Paper } from "@mui/material";
 import React from "react";
 import InfoIcon from "@mui/icons-material/Info";
 import ViewCarouselIcon from '@mui/icons-material/ViewCarousel';
@@ -11,6 +11,7 @@ export default function Footer() {
   const navigate = useNavigate();
   const {user} = useUser();
   return (
+    <Box>
     <Paper
       sx={{ position: "sticky", bottom: 0, left: 0, right: 0 }}
       elevation={3}
@@ -29,5 +30,6 @@ export default function Footer() {
         {user?<Logged/>:null}
       </BottomNavigation>
     </Paper>
+    </Box>
   );
 }

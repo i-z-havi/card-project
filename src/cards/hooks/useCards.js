@@ -1,4 +1,8 @@
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
+import useAxios from "../../hooks/useAxios";
+import { useUser } from "../../users/providers/UserProvider";
+import { useSnack } from "../../providers/SnackBarProvider";
+import normalizeCard from "../helpers/normalization/normalizeCard";
 import {
   changeLikeStatus,
   createCard,
@@ -8,18 +12,15 @@ import {
   getCards,
   getMyCards,
 } from "../services/cardApiService";
-import useAxios from "../../hooks/useAxios";
-import { useSnack } from "../../providers/SnackBarProvider";
-import { useUser } from "../../users/providers/UserProvider";
-import { useMemo } from "react";
+
 
 export default function useCards() {
   const [cards, setCards] = useState([]);
-  const [isLoading, setLoading] = useState(true);
+  const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [card, setCard] = useState(null);
   useAxios();
-  const snack = useSnack();
+  const snack =useSnack();
   const {user}=useUser();
 
   const requestStatus = (loading, errorMessage, cards, card = null) => {
@@ -110,7 +111,9 @@ export default function useCards() {
   const handleCreateCard = useCallback(async (cardFromClient) => {
     try {
       setLoading(true);
-      const card = await createCard(cardFromClient);
+      const normalizedCard=normalizeCard(cardFromClient);
+      const card = await createCard(normalizedCard);
+      console.log(card);
       requestStatus(false, null, null, card);
       snack("success", "A new business card has been created");
     } catch (error) {
@@ -125,9 +128,6 @@ export default function useCards() {
 
   return {
     value,
-    cards,
-    isLoading,
-    error,
     handleGetCard,
     handleGetCards,
     handleLikeCard,

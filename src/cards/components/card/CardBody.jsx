@@ -1,7 +1,7 @@
 import { CardContent, CardHeader, Divider, Typography } from "@mui/material";
 import { number, string } from "prop-types";
 import React from "react";
-import addressType from "../../models/addressType";
+import addressType from "../../models/types/addressType";
 
 export default function CardBody({
   title,
