@@ -6,7 +6,9 @@ make sure to check styles of mui components when nested in custom ones
 
 TO DO:
 
-check card creation house number, make sure its number and not string
+check card creation house number, make sure its number and not string-- DONE
+
+biznumber in card is marked as required, no idea if it should be
 
 check maptomodel
 
