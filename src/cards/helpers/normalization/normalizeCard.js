@@ -15,9 +15,12 @@ const normalizeCard = (card) => {
         country: card.country,
         city: card.city,
         street: card.street,
-        houseNumber: card.houseNumber,
+        houseNumber: Number(card.houseNumber),
         zip: card.zip,
       },
+      bizNumber: card.bizNumber,
+      likes:[],
+      user_id: card.user_id
     };
   };
   

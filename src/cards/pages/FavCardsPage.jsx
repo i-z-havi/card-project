@@ -3,9 +3,10 @@ import React, { useEffect } from "react";
 import PageHeader from "../../components/PageHeader";
 import useCards from "../hooks/useCards";
 import CardsFeedback from "../components/CardsFeedback";
-import { useSearchParams } from "react-router-dom";
+import { Navigate, useSearchParams } from "react-router-dom";
 import AddCardBtn from "../components/AddCardBtn";
 import { useUser } from "../../users/providers/UserProvider";
+import ROUTES from "../../routes/routesModel";
 
 export default function CardsPage() {
   const { value, handleGetFavCards, handleDeleteCard } = useCards();
@@ -15,7 +16,7 @@ export default function CardsPage() {
   useEffect(() => {
     handleGetFavCards();
   }, []);
-
+  if(!user) return <Navigate replace to={ROUTES.ROOT}/>;
   const handleDelete =async(id)=>{
     await handleDeleteCard(id);
     handleGetFavCards();

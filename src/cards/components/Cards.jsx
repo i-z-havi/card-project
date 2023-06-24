@@ -14,8 +14,10 @@ export default function Cards({ cards, handleDelete }) {
   const {handleLikeCard}=useCards();
 
   const isLiked=(card)=>{
+    if(!user) return false;
+    if(!card.likes) return false;
     if (user) return (card.likes.includes(user.id));
-    else return false;
+    return false;
   }
 
   return (

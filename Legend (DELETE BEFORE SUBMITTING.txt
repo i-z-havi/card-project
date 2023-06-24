@@ -10,6 +10,8 @@ check card creation house number, make sure its number and not string
 
 check maptomodel
 
+check why no cards found text pops up between card pages
+
 see why the menu you get when clicking on the profile isnt updating correctly --DONE
 
 normalize cards when you make them! update function in usecards hook--DONE
