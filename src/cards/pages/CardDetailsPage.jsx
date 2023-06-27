@@ -14,7 +14,7 @@ export default function CardDetailsPage() {
   useEffect(()=>{
     handleGetCard(id)
   },[])
-
+  console.log(value.card);
   const {isLoaded}= useLoadScript({
     googleMapsApiKey: "AIzaSyBYWQ_bT1b39uMS_iIMCmunhYHtvMiFiac",
   });
@@ -30,7 +30,7 @@ export default function CardDetailsPage() {
           subtitle={"This page contains all data for the card "+value.card.address.state}
           />
     }
-    {(isLoaded)&&<Map key={key} address={{value}}/>}
+    {isLoaded&&<Map key={key} address={value.card}/>}
     </Container>
   )
 }
