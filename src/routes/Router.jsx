@@ -25,6 +25,7 @@ import Login from "../pages/Login";
 import Signin from "../pages/Signin";
 import CreateCardPage from "../cards/pages/CreateCardPage";
 import EditCardPage from "../cards/pages/EditCardPage";
+import Maptest from "../sandbox/components/Maptest";
 
 export default function Router() {
   return (
@@ -53,6 +54,7 @@ export default function Router() {
         <Route path="form" element={<TestForm/>} />
         <Route path="login" element={<Login/>}/>
         <Route path="signin" element={<Signin/>}/>
+        <Route path="map" element={<Maptest/>}/>
       </Route>
       <Route path="*" element={<ErrorPage />} />
     </Routes>

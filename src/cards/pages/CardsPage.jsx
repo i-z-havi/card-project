@@ -30,7 +30,6 @@ export default function CardsPage() {
     <div>
       <Container sx={{
         pt: 8,
-        
       }}>
         <PageHeader
           title="Cards"

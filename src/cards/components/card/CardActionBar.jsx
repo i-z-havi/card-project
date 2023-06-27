@@ -108,7 +108,7 @@ export default function CardActionBar({
 }
 
 CardActionBar.propTypes = {
-  id: string,
+  id: string.isRequired,
   handleDelete: func,
   handleLike: func,
   handleEdit: func,

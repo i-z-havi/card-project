@@ -20,6 +20,7 @@ export default function SandBox() {
           <NavItem to="form" label="My form" sx={{ color: "black" }} />
           <NavItem to="login" label="log in" sx={{ color: "black" }}/>
           <NavItem to="signin" label="sign in" sx={{ color: "black" }}/>
+          <NavItem to="map" label="map" sx={{color:"black"}}/>
         </Toolbar>
       </AppBar>
       <Container>
