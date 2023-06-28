@@ -5,8 +5,7 @@ import { Container} from "@mui/material";
 import PageHeader from "../../components/PageHeader";
 import { useLoadScript } from "@react-google-maps/api";
 import Map from "../../components/Map";
-import { useState } from "react";
-import {key} from "../services/mapApiService.js";
+import useMap from "../hooks/useMap";
 
 export default function CardDetailsPage() {
   const {value,handleGetCard} = useCards();
@@ -15,6 +14,7 @@ export default function CardDetailsPage() {
     handleGetCard(id)
 
   },[])
+  const {key}=useMap();
   const {isLoaded}= useLoadScript({
     googleMapsApiKey: key,
   });
@@ -30,7 +30,7 @@ export default function CardDetailsPage() {
   {(value.card&&isLoaded)?
   <div>
    <PageHeader title="Card Details"
-          subtitle={"This page contains all data for the card "+value.card.address}
+          subtitle={"This page contains all data for the card "+value.card.title}
           />
     <Map key={key} address={value.card.address}/>
     </div>:null
