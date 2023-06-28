@@ -1,13 +1,9 @@
 import React from 'react'
 import Box from '@mui/material/Box';
 import { GoogleMap,Marker } from "@react-google-maps/api";
-import{getPosition} from "../cards/services/mapApiService.js"
 import { useEffect } from 'react';
-import axios from 'axios';
-import { useState } from 'react';
 import { useUser } from '../users/providers/UserProvider.jsx';
 import useMap from '../cards/hooks/useMap.js';
-import { Typography } from '@mui/material';
 
 export default function Map(address) {
   const {token}=useUser();
