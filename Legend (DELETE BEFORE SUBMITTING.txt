@@ -6,11 +6,13 @@ make sure to check styles of mui components when nested in custom ones
 
 TO DO:
 
+for profile page, check getuser function in server and make in userApi.js-more info can be found in lesson beginning of 29/06/2023
+
 check card creation house number, make sure its number and not string-- DONE
 
-biznumber in card is marked as required, no idea if it should be
+biznumber in card is marked as required, no idea if it should be--should be done? new server has generate biznumber function, DONE??????
 
-check maptomodel
+check maptomodel-used for specific functions, DONE!
 
 check why no cards found text pops up between card pages
 
