@@ -7,7 +7,7 @@ import {Box} from '@mui/material'
 export default function Logged() {
     const {user}=useUser();
   return (
-    <Box>
+    <Box sx={{display:{sm: "none",xs:"none", md: 'block'}, pt:1}}>
     <NavItem to={ROUTES.FAV_CARDS} label='Fav Cards'/>
     {user.isBusiness?<NavItem to={ROUTES.MY_CARDS} label='My Cards'/>:null}
     {user.isAdmin?<NavItem to={ROUTES.SANDBOX} label="Sandbox"/>:null}

@@ -6,7 +6,7 @@ make sure to check styles of mui components when nested in custom ones
 
 TO DO:
 
-for profile page, check getuser function in server and make in userApi.js-more info can be found in lesson beginning of 29/06/2023
+for user profile page, check getuser function in server and make in userApi.js-more info can be found in lesson beginning of 29/06/2023
 
 check card creation house number, make sure its number and not string-- DONE
 
