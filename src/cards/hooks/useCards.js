@@ -20,8 +20,8 @@ export default function useCards() {
   const [error, setError] = useState(null);
   const [card, setCard] = useState(null);
   useAxios();
-  const snack =useSnack();
-  const {user}=useUser();
+  const snack = useSnack();
+  const { user } = useUser();
 
   const requestStatus = (loading, errorMessage, cards, card = null) => {
     setLoading(loading);
@@ -62,36 +62,36 @@ export default function useCards() {
     }
   }, []);
 
-    //handleGetCard
-    const handleGetCard = useCallback(async (cardId) => {
-      try {
-        setLoading(true);
-        const card = await getCard(cardId);
-        requestStatus(false, null, null, card);
-        return card;
-      } catch (error) {
-        requestStatus(false, error, null);
-      }
-    }, []);
+  //handleGetCard
+  const handleGetCard = useCallback(async (cardId) => {
+    try {
+      setLoading(true);
+      const card = await getCard(cardId);
+      requestStatus(false, null, null, card);
+      return card;
+    } catch (error) {
+      requestStatus(false, error, null);
+    }
+  }, []);
 
-    const handleUpdateCard = useCallback(async (cardId, cardFromClient) => {
-      try {
-        setLoading(true);
-        const card = await editCard(cardId, cardFromClient);
-        requestStatus(false, null, null, card);
-        snack("success", "The business card has been successfully updated");
-      } catch (error) {
-        requestStatus(false, error, null);
-      }
-    }, []);
+  const handleUpdateCard = useCallback(async (cardId, cardFromClient) => {
+    try {
+      setLoading(true);
+      const card = await editCard(cardId, cardFromClient);
+      requestStatus(false, null, null, card);
+      snack("success", "The business card has been successfully updated");
+    } catch (error) {
+      requestStatus(false, error, null);
+    }
+  }, []);
 
-      //handleLikeCard
-  const handleLikeCard = useCallback(async (cardId,isLiked) => {
+  //handleLikeCard
+  const handleLikeCard = useCallback(async (cardId, isLiked) => {
     try {
       const card = await changeLikeStatus(cardId);
       requestStatus(false, null, cards, card);
-      if (!isLiked){
-      snack("success", "The business card has been Liked");
+      if (!isLiked) {
+        snack("success", "The business card has been Liked");
       } else snack("success", "The business card has been unliked");
     } catch (error) {
       requestStatus(false, error, null);
@@ -113,7 +113,8 @@ export default function useCards() {
   const handleCreateCard = useCallback(async (cardFromClient) => {
     try {
       setLoading(true);
-      const normalizedCard=normalizeCard(cardFromClient);
+      const normalizedCard = normalizeCard(cardFromClient);
+      normalizedCard.user_id = user.id;
       const card = await createCard(normalizedCard);
       requestStatus(false, null, null, card);
       snack("success", "A new business card has been created");
