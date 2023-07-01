@@ -11,16 +11,12 @@ export default function LeftNavigation() {
   const {user}=useUser();
   return <Box>
     <LogoIcon />
-    <Box sx={{
-      display: { sm: "none",xs:"none", md: "inline-flex" },
-    }}
->
-      
-      <Logo />
-      <Box sx={{pt:1}}>
-      <NavItem to={ROUTES.CARDS} label="Cards"  /> 
-      <NavItem to={ROUTES.ABOUT} label="About" /> 
-      </Box>
+    <Box sx={{display: { sm: "none",xs:"none", md: "inline-flex" },}}>
+    <Logo />
+        <Box sx={{pt:1}}>
+          <NavItem to={ROUTES.CARDS} label="Cards"  /> 
+          <NavItem to={ROUTES.ABOUT} label="About" /> 
+    </Box>
       {user?<Logged/>:null}
       
     </Box>

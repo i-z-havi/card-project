@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import useCards from "../hooks/useCards";
-import { Container, Divider, Grid, Table, TableContainer, TableRow, Typography} from "@mui/material";
+import { Container, Divider, Grid,List, ListItemText,Box} from "@mui/material";
 import PageHeader from "../../components/PageHeader";
 import { useLoadScript } from "@react-google-maps/api";
 import Map from "../../components/Map";
@@ -36,38 +36,25 @@ export default function CardDetailsPage() {
   {(value.card&&isLoaded)?
   <Grid container spacing={2}> 
     <Grid item xs={8}>
-     <TableContainer>
-      <Table>
-        <TableRow>
-          <Typography variant="h4">Description:</Typography>{value.card.description}
-        </TableRow>
+      <List>
+        <ListItemText primaryTypographyProps={{fontSize: '40px'}}>Description:</ListItemText>
+        <ListItemText>{value.card.description}</ListItemText>
         <Divider/>
-        <TableRow>
-        <Typography variant="h4">Phone Number:</Typography>{value.card.phone}
-        </TableRow>
+        <ListItemText primaryTypographyProps={{fontSize: '40px'}}>Phone Number:</ListItemText>
+        <ListItemText>{value.card.phone}</ListItemText>
         <Divider/>
-        <TableRow>
-        <Typography variant="h4">Email:</Typography>{value.card.email}
-        </TableRow>
+        <ListItemText primaryTypographyProps={{fontSize: '40px'}}>Email:</ListItemText>
+        <ListItemText>{value.card.email}</ListItemText>
         <Divider/>
-        {value.card.web&&
-        <div>
-        <TableRow>
-        <Typography variant="h4">Website Link:</Typography>{value.card.web}
-        </TableRow>
-        <Divider/>
-        </div>
-        }
-        <TableRow>
-        <Typography variant="h4">Address:</Typography>{value.card.address.houseNumber+" "+value.card.address.street+", "+value.card.address.city+", "+value.card.address.country}
-        </TableRow>
-        <Divider/>
-      </Table>
-     </TableContainer>
+        {value.card.web&&<Box><ListItemText primaryTypographyProps={{fontSize: '40px'}}>Website:</ListItemText>
+        <ListItemText>{value.card.web}</ListItemText><Divider/></Box>}
+        <ListItemText primaryTypographyProps={{fontSize: '40px'}}>Address:</ListItemText>
+        <ListItemText>{value.card.address.houseNumber+" "+value.card.address.street+", "+value.card.address.city+", "+value.card.address.country}</ListItemText>
+      </List>
     </Grid>
     <Grid item
           md={4}
-          sx={{ display: { sm: "none", xs: "none", md:"block" }, justifyContent: "center" }}>
+          sx={{ display: { sm: "none", xs: "none", md:"flex" }, justifyContent: "center", alignItems:"center"}}>
     <Map key={key} address={value.card.address}/>
     </Grid>
   </Grid>
@@ -76,3 +63,4 @@ export default function CardDetailsPage() {
     </Container>
   )
 }
+  

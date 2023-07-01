@@ -1,10 +1,15 @@
 import { AppBar, Toolbar } from "@mui/material";
 import { Container } from "@mui/material";
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import NavItem from "../routes/components/NavItem";
+import { useUser } from "../users/providers/UserProvider";
+import ROUTES from "../routes/routesModel";
 
 export default function SandBox() {
+  const {user}=useUser();
+  if(!user) return<Navigate replace to={ROUTES.CARDS}/>
+  if(!user.isAdmin) return<Navigate replace to={ROUTES.CARDS}/>
   return (
     <div>
       <AppBar position="sticky" color="transparent">

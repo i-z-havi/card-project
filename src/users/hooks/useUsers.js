@@ -78,6 +78,7 @@ const useUsers = () => {
     value,
     handleLogin,
     handleLogout,
+    handleSignup
   };
 };
 

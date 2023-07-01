@@ -11,6 +11,7 @@ export default function LogoIcon() {
           <Avatar
             src="\assets\images\business-card.png"
             alt="Bussiness card icon"
+            sx={{pb:1}}
           />
         </IconButton>
       </NavBarLink>

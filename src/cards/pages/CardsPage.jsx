@@ -33,7 +33,7 @@ export default function CardsPage() {
       }}>
         <PageHeader
           title="Cards"
-          subtitle="On this page you can find all bussines cards from all categories"
+          subtitle="On this page you can find all business cards from all categories"
         />
         <CardsFeedback cards={filterCards(value.cards,search)} isLoading={value.isLoading} error={value.error} handleDelete={handleDelete}/>
       </Container>

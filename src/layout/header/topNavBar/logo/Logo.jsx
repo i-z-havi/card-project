@@ -10,6 +10,7 @@ export default function Logo() {
           display: { xs: "none", md: "inline-flex" },
           marginRight: 2,
           fontFamily: "fantasy",
+          
         }}
       >
         BCard
