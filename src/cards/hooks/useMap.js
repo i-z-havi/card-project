@@ -17,6 +17,7 @@ export default function useMap() {
     const parseAddress = (address) => {
         let parsedAddress = "";
         parsedAddress += address.address.houseNumber + "+" + address.address.street + "+" + address.address.city;
+        if(address.address.state) {parsedAddress=+"+"+address.address.state}
         return parsedAddress;
     }
 

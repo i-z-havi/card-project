@@ -16,7 +16,6 @@ export default function Cards({ cards, handleDelete }) {
   };
   const {user}=useUser();
   const {handleLikeCard}=useCards();
-
   const isLiked=(card)=>{
     if(!user) return false;
     if(!card.likes) return false;

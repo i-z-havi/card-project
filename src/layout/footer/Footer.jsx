@@ -11,9 +11,8 @@ export default function Footer() {
   const navigate = useNavigate();
   const {user} = useUser();
   return (
-    <Box>
+    <Box sx={{ position: "sticky", bottom: 0, left: 0, right: 0 }}>
     <Paper
-      sx={{ position: "sticky", bottom: 0, left: 0, right: 0 }}
       elevation={3}
     >
       <BottomNavigation showLabels>

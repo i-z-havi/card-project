@@ -15,10 +15,10 @@ export default function Map(address) {
   return (
     <Box>
         {lat?
-        <GoogleMap zoom={20} center={{lat:lat, lng: lng}} mapContainerStyle={{width:500,height:500}}>
+        <GoogleMap zoom={20} center={{lat:lat, lng: lng}} mapContainerStyle={{width:300,height:320}}>
             <Marker position={{lat:lat,lng:lng}} />
         </GoogleMap>
-        :<p>There was an error! {error}</p>}
+        :<p>{error}</p>}
     </Box>
   )
 }

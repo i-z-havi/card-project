@@ -1,6 +1,6 @@
 import { Container } from "@mui/material";
 import React, { useEffect } from "react";
-import { Navigate, useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import useForm from "../../forms/hooks/useForm";
 import ROUTES from "../../routes/routesModel";
 import { useUser } from "../../users/providers/UserProvider";
@@ -21,6 +21,7 @@ export default function EditCardPage() {
     handleGetCard,
     value: { card },
   } = useCards();
+  const navigate = useNavigate();
 
   //user - useUser (provider)
   const { user } = useUser();
@@ -39,6 +40,12 @@ export default function EditCardPage() {
       rest.setData(modelCard);
     });
   }, []);
+
+  const handleSubmit=()=>{
+    rest.onSubmit();
+    navigate(ROUTES.CARDS)
+  }
+
   if (!user) return <Navigate replace to={ROUTES.CARDS} />;
 
   return (
@@ -52,7 +59,7 @@ export default function EditCardPage() {
     >
       <CardForm
         title="edit card"
-        onSubmit={rest.onSubmit}
+        onSubmit={handleSubmit}
         onReset={rest.handleReset}
         errors={value.errors}
         onFormChange={rest.validateForm}
