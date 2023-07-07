@@ -2,14 +2,14 @@
 This application was made as part of the HackerU .NET fullstack course.
 It is built to allow businesses to easily create, share, edit, and save digital business cards.
 To use the application, create an account by pressing the "Sign In" button.
-If you already have an account, press the "Log in" button.
--If you want to create cards, sign up as a business.
--If you are a client who only wishes to save various businesses, you can sign up normally.
+If you already have an account, press the "Log in" button.\
+-If you want to create cards, sign up as a business.\
+-If you are a client who only wishes to save various businesses, you can sign up normally.\
 
 
 After creating your account, you'll see that the UI has changed.
--If you signed up as a client, you will see a "favorite cards" tab. There, every card that you have favorited (by clicking the heart icon) will appear.
--If you signed up as a business, you will also see the "my cards" tab. There, every card made under that business account will appear.
+-If you signed up as a client, you will see a "favorite cards" tab. There, every card that you have favorited (by clicking the heart icon) will appear.\
+-If you signed up as a business, you will also see the "my cards" tab. There, every card made under that business account will appear.\
 Cards that you have created will allow you to run CRUD operations on them.
 
 To create a card, click on the "+" button located in the bottom right of the page while signed in as a business/administrator.
