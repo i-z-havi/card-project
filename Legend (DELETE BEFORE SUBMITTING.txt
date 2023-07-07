@@ -6,7 +6,7 @@ make sure to check styles of mui components when nested in custom ones
 
 TO DO:
 
-edituserProfile: Password isnt properly put into field! make sure that user gets prompt telling them to input it, and redirect to cards
+edituserProfile: Password isnt properly put into field! make sure that user gets prompt telling them to input it
 
 ask if i can send profile picture and alt in user from useUser provider for top right profile pic
 
@@ -14,7 +14,7 @@ check how to send error messages in snack
 
 check why no cards found text pops up between card pages
 
-for user profile page, check getuser function in server and make in userApi.js-more info can be found in lesson beginning of 29/06/2023
+for user profile page, check getuser function in server and make in userApi.js-more info can be found in lesson beginning of 29/06/2023--DONE
 
 check card creation house number, make sure its number and not string-- DONE
 

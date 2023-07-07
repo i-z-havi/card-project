@@ -5,14 +5,17 @@ import ROUTES from "../../../../routes/routesModel";
 import { useUser } from "../../../../users/providers/UserProvider";
 import useUsers from "../../../../users/hooks/useUsers";
 import MenuLink from "../../../../routes/components/MenuLink";
+import { useNavigate } from "react-router-dom";
 
 const Menu = ({ isOpen, anchorEl, onClose }) => {
   const { user } = useUser();
   const { handleLogout } = useUsers();
+  const navigate = useNavigate();
 
   const onLogout = () => {
     handleLogout();
     onClose();
+    navigate("/cards");
   };
 
   return (

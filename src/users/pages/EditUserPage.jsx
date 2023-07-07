@@ -54,7 +54,8 @@ export default function SignupPage() {
         onInputChange={rest.handleChange}
         setData={rest.setData}
       />
-    </Container>}
+    </Container>
+   }
     </div>
   );
 }
