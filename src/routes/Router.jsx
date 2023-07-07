@@ -10,7 +10,7 @@ import FirstComponent from "../sandbox/components/FirstComponent";
 import LifeCycle from "../sandbox/components/LifeCycle";
 import SecondComponent from "../sandbox/components/SecondComponent";
 import SandBox from "../sandbox/SandBox";
-import EditUser from "../users/pages/EditUser";
+import EditUser from "../users/pages/EditUserPage";
 import LoginPage from "../users/pages/LoginPage";
 import SignupPage from "../users/pages/SignupPage";
 import UserProfile from "../users/pages/UserProfile";
@@ -21,8 +21,6 @@ import MyCounter from "../sandbox/components/MyCounter";
 import Countires from "../sandbox/components/Countires";
 import GrandComponent from "../sandbox/context/GrandComponent";
 import TestForm from "../sandbox/forms/TestForm";
-import Login from "../pages/Login";
-import Signin from "../pages/Signin";
 import CreateCardPage from "../cards/pages/CreateCardPage";
 import EditCardPage from "../cards/pages/EditCardPage";
 import Maptest from "../sandbox/components/Maptest";
@@ -52,8 +50,6 @@ export default function Router() {
         <Route path="countries" element={<Countires />} />
         <Route path="grand" element={<GrandComponent />} />
         <Route path="form" element={<TestForm/>} />
-        <Route path="login" element={<Login/>}/>
-        <Route path="signin" element={<Signin/>}/>
         <Route path="map" element={<Maptest/>}/>
       </Route>
       <Route path="*" element={<ErrorPage />} />

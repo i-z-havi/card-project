@@ -8,14 +8,15 @@ import {
 import { useUser } from "../providers/UserProvider";
 import { useNavigate } from "react-router-dom";
 import ROUTES from "../../routes/routesModel";
-import { login, signup } from "../services/userApiService";
+import { getUserData, login, signup, updateUser } from "../services/userApiService";
 import normalizeUser from "../helpers/normalization/normalizeUser";
+import { useSnack } from "../../providers/SnackBarProvider";
 
 
 const useUsers = () => {
   const [isLoading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const snack = useSnack();
   const navigate = useNavigate();
   //useUser is from UserProvider, NOT from useUsers hook!
   const { user, setUser, setToken } = useUser();
@@ -63,6 +64,29 @@ const useUsers = () => {
   );
 
 
+  const handleGetUser = useCallback(async () => {
+    try {
+      setLoading(true);
+      const user = await getUserData();
+      requestStatus(false, null, user);
+      return user;
+    } catch (error) {
+      requestStatus(false, error, null);
+    }
+  }, []);
+
+  const handleUpdateUser = useCallback(async (updatedUser) => {
+    try {
+      setLoading(true);
+      console.log(updatedUser.isBusiness);
+      const user = await updateUser(updatedUser.user_id, updatedUser);
+      requestStatus(false, null, user);
+      snack("success", "The user has been successfully updated");
+    } catch (error) {
+      requestStatus(false, error, null);
+    }
+  }, []);
+
 
   const handleLogout = useCallback(() => {
     removeToken();
@@ -74,11 +98,15 @@ const useUsers = () => {
     [isLoading, error, user]
   );
 
+
+
   return {
     value,
     handleLogin,
     handleLogout,
-    handleSignup
+    handleSignup,
+    handleGetUser,
+    handleUpdateUser
   };
 };
 

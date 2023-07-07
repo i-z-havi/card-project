@@ -6,6 +6,7 @@ import Grid from "@mui/material/Grid";
 import Form from "../../forms/components/Form";
 import Input from "../../forms/components/Input";
 import ROUTES from "../../routes/routesModel";
+import { Typography } from "@mui/material";
 
 const UserForm = ({
   onSubmit,
@@ -147,13 +148,14 @@ const UserForm = ({
         sm={6}
         required={false}
       />
+      
       <Grid item>
         <FormControlLabel
           onChange={(e) => {
             setData({ ...data, isBusiness: !!e.target.checked });
           }}
           name="isBusiness"
-          control={<Checkbox value={data.isBusiness} color="primary" />}
+          control={<Checkbox value={data.isBusiness} checked={data.isBusiness} color="primary" />}
           label="Signup as business"
         />
       </Grid>

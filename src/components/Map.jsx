@@ -15,7 +15,7 @@ export default function Map(address) {
   return (
     <Box>
         {lat?
-        <GoogleMap zoom={20} center={{lat:lat, lng: lng}} mapContainerStyle={{width:320,height:320}}>
+        <GoogleMap zoom={18} center={{lat:lat, lng: lng}} mapContainerStyle={{width:320,height:320}}>
             <Marker position={{lat:lat,lng:lng}} />
         </GoogleMap>
         :<p>{error}</p>}

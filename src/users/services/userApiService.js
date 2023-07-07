@@ -23,11 +23,19 @@ export const signup = async (normalizedUser) => {
   }
 };
 
+export const getUserData = async () => {
+  try {
+    const { data } = await axios.get(`${apiUrl}/user`);
+    return data;
+  } catch (error) {
+    return Promise.reject(error.message);
+  }
+};
 
 //this SHOULD work
-export const getUser = async () => {
+export const updateUser = async (Id, updatedUser) => {
   try {
-    const { data } = await axios.post(`${apiUrl}/user`);
+    const { data } = await axios.put(`${apiUrl}/users/${Id}`, updatedUser);
     return data;
   } catch (error) {
     return Promise.reject(error.message);

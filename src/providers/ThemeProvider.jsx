@@ -1,3 +1,4 @@
+import { CssBaseline } from "@mui/material";
 import {
   createTheme,
   ThemeProvider as MuiThemeProvider,
@@ -29,6 +30,7 @@ export default function ThemeProvider({ children }) {
 
   return (
     <MuiThemeProvider theme={theme}>
+      <CssBaseline/>
       <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
     </MuiThemeProvider>
   );
