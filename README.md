@@ -4,7 +4,7 @@ It is built to allow businesses to easily create, share, edit, and save digital 
 To use the application, create an account by pressing the "Sign In" button.
 If you already have an account, press the "Log in" button.\
 -If you want to create cards, sign up as a business.\
--If you are a client who only wishes to save various businesses, you can sign up normally.\
+-If you are a client who only wishes to save various businesses, you can sign up normally.
 
 
 After creating your account, you'll see that the UI has changed.
