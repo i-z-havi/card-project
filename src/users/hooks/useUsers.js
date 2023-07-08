@@ -18,7 +18,6 @@ const useUsers = () => {
   const [error, setError] = useState(null);
   const snack = useSnack();
   const navigate = useNavigate();
-  //useUser is from UserProvider, NOT from useUsers hook!
   const { user, setUser, setToken } = useUser();
 
   useAxios();
@@ -35,9 +34,7 @@ const useUsers = () => {
   const handleLogin = useCallback(async (user) => {
     try {
       const token = await login(user);
-      //vvvsets token in local storage vvv
       setTokenInLocalStorage(token);
-      //vvv re-renders according to token vvv
       setToken(token);
       const userFromLocalStorage = getUser();
       requestStatus(false, null, userFromLocalStorage);
@@ -78,7 +75,6 @@ const useUsers = () => {
   const handleUpdateUser = useCallback(async (updatedUser) => {
     try {
       setLoading(true);
-      console.log(updatedUser.isBusiness);
       const user = await updateUser(updatedUser.user_id, updatedUser);
       requestStatus(false, null, user);
       snack("success", "The user has been successfully updated");

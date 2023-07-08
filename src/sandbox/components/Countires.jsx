@@ -14,7 +14,6 @@ export default function Countires() {
   const getDataFromAPI = async () => {
     try {
       const { data } = await axios.get("https://restcountries.com/v3.1/all");
-      console.log(data);
       setCountries(data);
     } catch (err) {
       console.log(err.message);
@@ -24,11 +23,6 @@ export default function Countires() {
   return (
     <div>
       {countries
-      //? means only if there is a country
-      //due to axios getting the countries taking time,
-      //we must use ?
-      //because countries are usestates, they will get updated
-      //at the end of the sync
         ? countries.map((country) => (
             <Box
               display="flex"
@@ -47,12 +41,7 @@ export default function Countires() {
               </Typography>
             </Box>
           ))
-          //if there ISNT a country, the function will run everything
-          //that is after the :
         : null}
     </div>
   );
 }
-
-//conditional rendering
-//condition ? return if true : return if false

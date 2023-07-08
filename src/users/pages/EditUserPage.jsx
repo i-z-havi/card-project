@@ -28,7 +28,6 @@ export default function SignupPage() {
     try {handleGetUser(user.user_id).then((data) => {
       const modelUser = mapUserToModel(data);
       rest.setData(modelUser);
-      console.log(user);
     });
   }catch{navigate("/cards")}}, []);
 

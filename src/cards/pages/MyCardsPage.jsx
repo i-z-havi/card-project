@@ -19,7 +19,6 @@ export default function MyCards() {
   if(!user.isBusiness||user.isAdmin) return<Navigate replace to={ROUTES.CARDS}/>
   
   const handleDelete =async(id)=>{
-    //this way the cards also re-render 
     await handleDeleteCard(id);
     handleGetMyCards();
   }

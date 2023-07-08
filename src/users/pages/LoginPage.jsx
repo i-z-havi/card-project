@@ -14,13 +14,6 @@ import { Navigate } from "react-router-dom";
 export default function LoginPage() {
   const { user } = useUser();
   const { handleLogin } = useUsers();
-  //איך אנחנו בונים טופס עם הכלים שבנינו בשיעור קודם
-  //החלק הלוגי:
-  //נשתמש בהוק יוזפורם
-
-  //החלק הויזואלי
-  //נשתמש בקומפוננטת טופס שיצרנו
-  //ונכניס לתוכה קומפוננטות אינפוט שיצרנו
 
   const { value, ...rest } = useForm(
     initialLoginForm,

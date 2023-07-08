@@ -31,8 +31,6 @@ export default function CardActionBar({
   );
   const displayEdit=()=>{
   if(!!user){
-
-    //why is it read as .id if its saved as user_id?
     if ((String(userid)===String(user.id))||user.isAdmin) {
       return true
     }

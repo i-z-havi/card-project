@@ -79,9 +79,6 @@ export default function SignInForm() {
           <Form
             title="My form"
             onSubmit={()=>signUpArr.map((proper)=>(console.log(String(proper))))}
-            //if i want to all values in console, then i do what i did in login:
-            //a state for each obj prop and print them all
-            //def missing something here but this is what i have for now
             onReset={rest.handleReset}
             styles={{ maxWidth: "450px" }}
             validateForm={rest.validateForm}

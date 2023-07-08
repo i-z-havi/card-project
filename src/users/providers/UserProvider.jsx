@@ -6,7 +6,6 @@ import { getToken, getUser } from '../services/localStorageService';
 import { useMemo } from 'react';
 import { node } from 'prop-types';
 
-//context creation
 const UserContext=createContext();
     
 export default function UserProvider({children}) {

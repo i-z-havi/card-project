@@ -5,7 +5,6 @@ export const setTokenInLocalStorage=(encryptedToken)=> localStorage.setItem(TOKE
 
 export const removeToken=()=> localStorage.removeItem(TOKEN)
 
-//if an arrow function has no brackets, then it is returned by default
 export const getToken=()=> localStorage.getItem(TOKEN)
 
 export const getUser=()=>{

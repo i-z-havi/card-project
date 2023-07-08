@@ -44,11 +44,9 @@ export default function LogInForm() {
       setPassword(e.target.value);
     }
 
-    const handleSubmit=(data)=> (data); //if i use handle submit to send email/pass, sends on change for some reason
+    const handleSubmit=(data)=> (data); 
 
     const {data, errors, ...rest} = useForm(InitialLoginForm,loginSchema,handleSubmit) 
-    //everything in useForm parantheses is SENT
-    //everything in const curly braces is RECIEVED, all functions are in ...rest
     return (
         <Container
           sx={{

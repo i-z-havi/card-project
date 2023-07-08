@@ -11,7 +11,6 @@ export const getCards = async () => {
 };
 
 export const getMyCards = async () => {
-  console.log("get my cards");
   try {
     const response = await axios.get(`${apiUrl}/cards/my-cards`);
     const data = response.data;

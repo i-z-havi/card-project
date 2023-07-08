@@ -62,7 +62,6 @@ export default function useCards() {
     }
   }, []);
 
-  //handleGetCard
   const handleGetCard = useCallback(async (cardId) => {
     try {
       setLoading(true);
@@ -85,7 +84,6 @@ export default function useCards() {
     }
   }, []);
 
-  //handleLikeCard
   const handleLikeCard = useCallback(async (cardId, isLiked) => {
     try {
       const card = await changeLikeStatus(cardId);
@@ -97,7 +95,7 @@ export default function useCards() {
       requestStatus(false, error, null);
     }
   }, []);
-  //handleGetFavCards
+
   const handleGetFavCards = useCallback(async () => {
     try {
       setLoading(true);
@@ -109,7 +107,6 @@ export default function useCards() {
     }
   }, []);
 
-  //handleCreateCard
   const handleCreateCard = useCallback(async (cardFromClient) => {
     try {
       setLoading(true);

@@ -4,7 +4,6 @@ import React, { createContext, useCallback, useContext, useState } from "react";
 const SnackbarContext = createContext();
 
 export default function SnackbarProvider({ children }) {
-  //{children} in this case refers to all the html tags between 2 snackbarprovider tags (look at app.js!)
   const [isSnackOpen, setOpenSnack] = useState(false);
   const [snackColor, setSnackColor] = useState("success");
   const [snackVariant, setSnackVariant] = useState("filled");
