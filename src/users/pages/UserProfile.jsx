@@ -1,8 +1,5 @@
 import React, { useEffect } from "react";
-import { getUserData } from "../services/userApiService";
-import { Container, Divider, Grid,List, ListItemText,Box,Avatar} from "@mui/material";
-import { useState } from "react";
-import { BorderAll } from "@mui/icons-material";
+import { Container, Divider, Grid,List, ListItemText,Avatar} from "@mui/material";
 import PageHeader from "../../components/PageHeader";
 import useUsers from "../hooks/useUsers";
 import { Navigate } from "react-router-dom";

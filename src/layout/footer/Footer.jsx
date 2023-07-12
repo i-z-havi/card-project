@@ -1,4 +1,4 @@
-import { BottomNavigation, BottomNavigationAction, Box, Button, IconButton, Paper } from "@mui/material";
+import { BottomNavigation, BottomNavigationAction, Box, Paper } from "@mui/material";
 import React from "react";
 import InfoIcon from "@mui/icons-material/Info";
 import ViewCarouselIcon from '@mui/icons-material/ViewCarousel';

@@ -1,7 +1,5 @@
 import React from 'react'
-import{GoogleMap,useLoadScript,Marker} from '@react-google-maps/api'
-import { useMemo } from 'react';
-import Box from '@mui/material/Box';
+import{useLoadScript} from '@react-google-maps/api'
 import Map from '../../components/Map';
 
 export default function Maptest() {

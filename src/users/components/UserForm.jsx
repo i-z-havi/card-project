@@ -6,7 +6,6 @@ import Grid from "@mui/material/Grid";
 import Form from "../../forms/components/Form";
 import Input from "../../forms/components/Input";
 import ROUTES from "../../routes/routesModel";
-import { Typography } from "@mui/material";
 
 const UserForm = ({
   onSubmit,
