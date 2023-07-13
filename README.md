@@ -18,6 +18,8 @@ To create a card, click on the "+" button located in the bottom right of the pag
 
 ### Cards
 
+NOTE: For map functionality, insert your Google Maps API key into a .env file, and update the useMap hook located in cards->hooks->useMap(). Maps won't work without it!
+
 Shows all cards. Click on them to show more details, such as a map showing the location of the business, and the email and address of the business. Cards owned by the business that is logged in have an "Edit" button and a "Delete" button.
 
 ### About
