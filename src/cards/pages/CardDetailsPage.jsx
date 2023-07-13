@@ -58,7 +58,7 @@ export default function CardDetailsPage() {
     <Grid item
           md={4}
           sx={{ display: { sm: "none", xs: "none", md:"none", lg:"flex" }, justifyContent: "center", alignItems:"center"}}>
-    <Map key={key} address={value.card.address}/>
+    <Map address={value.card.address}/>
     </Grid>
   </Grid>
     :null

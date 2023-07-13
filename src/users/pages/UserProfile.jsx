@@ -52,7 +52,7 @@ export default function Profile() {
       </Grid>
       <Grid item xs={4} md={4}
           sx={{ display: { sm: "none", xs: "none", md:"none", lg:"flex" }, justifyContent: "center", alignItems:"center"}}>
-        <Map key={key} address={user.address}/>
+        <Map address={user.address}/>
       </Grid>
       </Grid>
       

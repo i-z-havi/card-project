@@ -7,7 +7,7 @@ export default function useMap() {
     const [error, setError] = useState();
     const [lat, setLat] = useState();
     const [lng, setLng] = useState();
-    const key = "AIzaSyBYWQ_bT1b39uMS_iIMCmunhYHtvMiFiac";
+    const key = process.env.REACT_APP_GOOGLE_MAP_API_KEY;
     const geocodeJson = 'https://maps.googleapis.com/maps/api/geocode/json';
 
     const getPosition = (address) => {
