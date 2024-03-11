@@ -38,6 +38,7 @@ export default function BusinessCard({
           handleLike={handleLike}
           handleEdit={handleEdit}
           isLiked={isLiked}
+          phone = {card.phone}
         />
       </Card>
     </>

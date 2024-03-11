@@ -19,7 +19,8 @@ export default function CardActionBar({
   handleDelete,
   handleLike,
   handleEdit,
-  isLiked
+  isLiked,
+  phone
 }) {
   
   const [open, setOpen] = useState(false);
@@ -69,9 +70,11 @@ export default function CardActionBar({
         }
         </Box>
         <Box>
+          <a href={"tel:"+phone}>
           <IconButton aria-label="Call">
             <CallIcon />
           </IconButton>
+          </a>
           {user&& <IconButton aria-label="Add to favorite" onClick={() => likeCard(id)}>
             <FavoriteIcon color={liked?"error":"inherit"} />
           </IconButton>
