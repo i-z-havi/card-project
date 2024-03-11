@@ -12,7 +12,6 @@ export const getUser = () => {
   try {
     const myToken = localStorage.getItem(TOKEN);
     const userDetails = jwtDecode(myToken);
-    console.log(userDetails)
     userDetails.isBusiness = userDetails.isBusiness === "True";
     userDetails.isAdmin = userDetails.isAdmin === "True";
     return userDetails;
