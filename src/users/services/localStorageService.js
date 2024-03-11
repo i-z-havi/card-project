@@ -12,9 +12,9 @@ export const getUser = () => {
   try {
     const myToken = localStorage.getItem(TOKEN);
     const userDetails = jwtDecode(myToken);
-    userDetails.isBusiness = userDetails.isBusiness === "true";
-    userDetails.isAdmin = userDetails.isAdmin === "true";
-
+    console.log(userDetails)
+    userDetails.isBusiness = userDetails.isBusiness === "True";
+    userDetails.isAdmin = userDetails.isAdmin === "True";
     return userDetails;
   } catch (error) {
     return null;
