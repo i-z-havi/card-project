@@ -14,7 +14,7 @@ export default function CardsPage() {
   const search=searchParams.get("titlesearch");
   useEffect(() => {
     handleGetCards();
-  }, []);
+  }, [handleGetCards]);
 
   const handleDelete =async(id)=>{
     await handleDeleteCard(id);

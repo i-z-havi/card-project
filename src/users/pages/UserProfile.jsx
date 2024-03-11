@@ -18,7 +18,7 @@ export default function Profile() {
   const {isLoading, error, user}=value;
   useEffect(() => {
     handleGetUser();
-  }, []);
+  }, [handleGetUser]);
 
   if(!user) return <Navigate replace to={ROUTES.ROOT}/>
   return <div>{(!isLoading&&isLoaded)?    

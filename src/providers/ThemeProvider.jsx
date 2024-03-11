@@ -26,7 +26,7 @@ export default function ThemeProvider({ children }) {
 
   const value = useMemo(() => {
     return { isDark, toggleDark };
-  }, [isDark]);
+  }, [isDark,toggleDark]);
 
   return (
     <MuiThemeProvider theme={theme}>

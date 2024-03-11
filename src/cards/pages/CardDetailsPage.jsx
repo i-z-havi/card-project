@@ -13,7 +13,7 @@ export default function CardDetailsPage() {
   const { id } = useParams();
   useEffect(()=>{
     handleGetCard(id)
-  },[])
+  },[handleGetCard,id])
   const {key}=useMap();
   const {isLoaded}= useLoadScript({
     googleMapsApiKey: key,

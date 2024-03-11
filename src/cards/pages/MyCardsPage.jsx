@@ -14,7 +14,7 @@ export default function MyCards() {
   const { value, handleGetMyCards, handleDeleteCard } = useCards();
   useEffect(() => {
     handleGetMyCards();
-  }, []);
+  }, [handleGetMyCards]);
   if(!user) return <Navigate replace to={ROUTES.ROOT}/>
   if(!user.isBusiness||user.isAdmin) return<Navigate replace to={ROUTES.CARDS}/>
   

@@ -42,7 +42,7 @@ const useUsers = () => {
     } catch (error) {
       requestStatus(false, error, null);
     }
-  }, []);
+  }, [navigate,requestStatus,setToken]);
 
   const handleSignup = useCallback(
     async (userFromTheClient) => {
@@ -57,7 +57,7 @@ const useUsers = () => {
         requestStatus(false, error, null);
       }
     },
-    [normalizeUser, handleLogin, requestStatus]
+    [handleLogin, requestStatus]
   );
 
 
@@ -70,7 +70,7 @@ const useUsers = () => {
     } catch (error) {
       requestStatus(false, error, null);
     }
-  }, []);
+  }, [requestStatus]);
 
   const handleUpdateUser = useCallback(async (updatedUser) => {
     try {
@@ -81,7 +81,7 @@ const useUsers = () => {
     } catch (error) {
       requestStatus(false, error, null);
     }
-  }, []);
+  }, [requestStatus,snack]);
 
 
   const handleLogout = useCallback(() => {

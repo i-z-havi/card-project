@@ -6,7 +6,7 @@ import { useSearchParams } from 'react-router-dom';
 
 export default function Search() {
   const {isDark} = useTheme();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [ ,setSearchParams] = useSearchParams();
   const handleChange =(e)=>{
     setSearchParams({titlesearch:e.target.value});
   }

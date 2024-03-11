@@ -29,7 +29,7 @@ export default function SignupPage() {
       const modelUser = mapUserToModel(data);
       rest.setData(modelUser);
     });
-  }catch{navigate("/cards")}}, []);
+  }catch{navigate("/cards")}}, [handleGetUser,rest,navigate,user]);
 
 
   return (

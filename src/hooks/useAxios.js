@@ -24,7 +24,7 @@ const useAxios = () => {
       axios.interceptors.request.eject(requestInterceptor);
       axios.interceptors.response.eject(responseInterceptor);
     };
-  }, [token]);
+  }, [token,snack]);
 };
 
 export default useAxios;

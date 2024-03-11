@@ -15,7 +15,7 @@ export default function CardsPage() {
   const search=searchParams.get("titlesearch");
   useEffect(() => {
     handleGetFavCards();
-  }, []);
+  }, [handleGetFavCards]);
   if(!user) return <Navigate replace to={ROUTES.ROOT}/>;
   const handleDelete =async(id)=>{
     await handleDeleteCard(id);

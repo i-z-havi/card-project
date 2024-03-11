@@ -39,7 +39,7 @@ export default function useCards() {
     } catch (error) {
       requestStatus(false, error, null);
     }
-  }, []);
+  }, [snack]);
 
   const handleGetMyCards = useCallback(async () => {
     try {
@@ -82,19 +82,19 @@ export default function useCards() {
     } catch (error) {
       requestStatus(false, error, null);
     }
-  }, []);
+  }, [snack]);
 
   const handleLikeCard = useCallback(async (cardId, isLiked) => {
     try {
       const card = await changeLikeStatus(cardId);
       requestStatus(false, null, cards, card);
       if (!isLiked) {
-        snack("success", "The business card has been Liked");
-      } else snack("success", "The business card has been unliked");
+        snack("success", "The business card has been liked!");
+      } else snack("success", "The business card has been unliked.");
     } catch (error) {
       requestStatus(false, error, null);
     }
-  }, []);
+  }, [snack,cards]);
 
   const handleGetFavCards = useCallback(async () => {
     try {
@@ -105,7 +105,7 @@ export default function useCards() {
     } catch (error) {
       requestStatus(false, error, null);
     }
-  }, []);
+  }, [user]);
 
   const handleCreateCard = useCallback(async (cardFromClient) => {
     try {
@@ -118,7 +118,7 @@ export default function useCards() {
     } catch (error) {
       requestStatus(false, error, null);
     }
-  }, []);
+  }, [snack,user]);
 
   const value = useMemo(() => {
     return { isLoading, cards, card, error };

@@ -34,7 +34,7 @@ export default function EditCardPage() {
       const modelCard = mapCardToModel(data);
       rest.setData(modelCard);
     });
-  }, []);
+  }, [handleGetCard,id,rest]);
 
   const handleSubmit=()=>{
     rest.onSubmit();

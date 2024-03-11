@@ -7,10 +7,10 @@ import useMap from '../cards/hooks/useMap.js';
 
 export default function Map(address) {
   const {token}=useUser();
+  const { lat,lng,error, getDataFromAPI }=useMap();
   useEffect(()=>{
     getDataFromAPI(address,token)
-  },[])
-  const { lat,lng,error, getDataFromAPI }=useMap();
+  },[address,getDataFromAPI,token])
 
   return (
     <Box>
