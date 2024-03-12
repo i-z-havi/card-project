@@ -1,15 +1,16 @@
-import React from 'react'
+import React, { memo } from 'react'
 import Box from '@mui/material/Box';
 import { GoogleMap,Marker } from "@react-google-maps/api";
 import { useEffect } from 'react';
 import { useUser } from '../users/providers/UserProvider.jsx';
 import useMap from '../cards/hooks/useMap.js';
 
-export default function Map(address) {
+export default memo( function Map({address}) {
   const {token}=useUser();
   const { lat,lng,error, getDataFromAPI }=useMap();
   useEffect(()=>{
     getDataFromAPI(address,token)
+    console.log("getdatafromapi")
   },[address,getDataFromAPI,token])
 
   return (
@@ -21,4 +22,4 @@ export default function Map(address) {
         :<p>{error}</p>}
     </Box>
   )
-}
+})

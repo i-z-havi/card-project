@@ -5,13 +5,13 @@ import useUsers from "../hooks/useUsers";
 import { Navigate } from "react-router-dom";
 import ROUTES from "../../routes/routesModel";
 import Map from "../../components/Map";
-import useMap from "../../cards/hooks/useMap";
 import { useLoadScript } from "@react-google-maps/api";
+import { parseAddress } from "../../cards/helpers/map/maphelpers";
 
 export default function Profile() {
 
   const {handleGetUser,value}=useUsers()
-  const {key}=useMap()
+  const key = process.env.REACT_APP_GOOGLE_MAP_API_KEY;
   const {isLoaded}= useLoadScript({
     googleMapsApiKey: key,
   });
@@ -52,7 +52,7 @@ export default function Profile() {
       </Grid>
       <Grid item xs={4} md={4}
           sx={{ display: { sm: "none", xs: "none", md:"none", lg:"flex" }, justifyContent: "center", alignItems:"center"}}>
-        <Map address={user.address}/>
+        <Map address={parseAddress(user.address)}/>
       </Grid>
       </Grid>
       

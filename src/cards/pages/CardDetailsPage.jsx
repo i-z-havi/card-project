@@ -5,7 +5,7 @@ import { Container, Divider, Grid,List, ListItemText,Box, ListItemAvatar, Avatar
 import PageHeader from "../../components/PageHeader";
 import { useLoadScript } from "@react-google-maps/api";
 import Map from "../../components/Map";
-import useMap from "../hooks/useMap";
+import { parseAddress } from "../helpers/map/maphelpers";
 
 
 export default function CardDetailsPage() {
@@ -14,7 +14,7 @@ export default function CardDetailsPage() {
   useEffect(()=>{
     handleGetCard(id)
   },[handleGetCard,id])
-  const {key}=useMap();
+  const key = process.env.REACT_APP_GOOGLE_MAP_API_KEY;
   const {isLoaded}= useLoadScript({
     googleMapsApiKey: key,
   });
@@ -58,7 +58,7 @@ export default function CardDetailsPage() {
     <Grid item
           md={4}
           sx={{ display: { sm: "none", xs: "none", md:"none", lg:"flex" }, justifyContent: "center", alignItems:"center"}}>
-    <Map address={value.card.address}/>
+    <Map address={parseAddress(value.card.address)}/>
     </Grid>
   </Grid>
     :null
