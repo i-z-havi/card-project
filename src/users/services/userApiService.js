@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const apiUrl = process.env.REACT_APP_API_URL || "https://localhost:7222/";
+const apiUrl = "https://localhost:7222/api"||process.env.REACT_APP_API_URL;
+
 
 export const login = async (user) => {
   try {    
@@ -20,9 +21,9 @@ export const signup = async (normalizedUser) => {
   }
 };
 
-export const getUserData = async () => {
+export const getUserData = async (id) => {
   try {
-    const { data } = await axios.get(`${apiUrl}/user`);
+    const { data } = await axios.get(`${apiUrl}/users/${id}`);
     return data;
   } catch (error) {
     return Promise.reject(error.message);

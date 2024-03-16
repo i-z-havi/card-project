@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Divider, Grid,List, ListItemText,Avatar} from "@mui/material";
 import PageHeader from "../../components/PageHeader";
 import useUsers from "../hooks/useUsers";
@@ -7,21 +7,36 @@ import ROUTES from "../../routes/routesModel";
 import Map from "../../components/Map";
 import { useLoadScript } from "@react-google-maps/api";
 import { parseAddress } from "../../cards/helpers/map/maphelpers";
+import { useUser } from "../providers/UserProvider";
+import Spinner from "../../components/Spinner";
 
 export default function Profile() {
 
-  const {handleGetUser,value}=useUsers()
+  const {handleGetUser}=useUsers()
+  const {user}=useUser();
+  const [userFullData, SetUserFullData]=useState(null)
+  useEffect(() => {
+    if (user) {
+      const getUser = async () => {
+        SetUserFullData(await handleGetUser(user._id));
+      };
+      getUser();
+    }
+  }, [user, handleGetUser]);
+  
   const key = process.env.REACT_APP_GOOGLE_MAP_API_KEY;
   const {isLoaded}= useLoadScript({
     googleMapsApiKey: key,
   });
-  const {isLoading, error, user}=value;
-  useEffect(() => {
-    handleGetUser();
-  }, [handleGetUser]);
 
   if(!user) return <Navigate replace to={ROUTES.ROOT}/>
-  return <div>{(!isLoading&&isLoaded)?    
+
+  if (!userFullData||!isLoaded) return <Spinner/>
+
+  console.log(user)
+  console.log(userFullData)
+  
+  return <div>{ 
     <Container sx={{
     paddingTop: 8,
     justifyContent: "center", 
@@ -31,31 +46,31 @@ export default function Profile() {
       <Grid container spacing={2} sx={{border:1, borderRadius:"40px", mt:2, boxShadow:10}}>
       <Grid item xs={8}>
         <List>
-        <Avatar src={user.image.url} alt="user profile picture" sx={{width:100, height:100}}/>
+          <Avatar src={userFullData.image.url} alt={userFullData.image.alt} sx={{width:100, height:100}}/>
           <ListItemText primaryTypographyProps={{fontSize: '40px'}}>Name:</ListItemText>
-          <ListItemText>{user.name.first} {user.name.middle} {user.name.last}</ListItemText>
+          <ListItemText>{userFullData.name.first} {userFullData.name.middle} {userFullData.name.last}</ListItemText>
           <Divider/>
           <ListItemText primaryTypographyProps={{fontSize: '40px'}}>Phone:</ListItemText>
-          <ListItemText>{user.phone}</ListItemText>
+          <ListItemText>{userFullData.phone}</ListItemText>
           <Divider/>
           <ListItemText primaryTypographyProps={{fontSize: '40px'}}>Email:</ListItemText>
-          <ListItemText>{user.email}</ListItemText>
+          <ListItemText>{userFullData.email}</ListItemText>
           <Divider/>
           <ListItemText primaryTypographyProps={{fontSize: '40px'}}>Address:</ListItemText>
-          <ListItemText>{user.address.houseNumber+" "+user.address.street+", "+user.address.city+", "+user.address.country}</ListItemText>
+          <ListItemText>{userFullData.address.houseNumber+" "+userFullData.address.street+", "+userFullData.address.city+", "+userFullData.address.country}</ListItemText>
           <Divider/>
           <ListItemText primaryTypographyProps={{fontSize: '40px'}}>Email:</ListItemText>
-          <ListItemText>{user.email}</ListItemText>
+          <ListItemText>{userFullData.email}</ListItemText>
           <Divider/>
-          {user.isBusiness&&<ListItemText>This user is a business</ListItemText>}
+          {userFullData.isBusiness&&<ListItemText>This user is a business</ListItemText>}
         </List>
       </Grid>
       <Grid item xs={4} md={4}
           sx={{ display: { sm: "none", xs: "none", md:"none", lg:"flex" }, justifyContent: "center", alignItems:"center"}}>
-        <Map address={parseAddress(user.address)}/>
+        <Map address={parseAddress(userFullData.address)}/>
       </Grid>
       </Grid>
       
-    </Container>:error}</div>;
+    </Container>}</div>;
 
 }

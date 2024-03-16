@@ -10,9 +10,9 @@ export default function useMap() {
 
     const getDataFromAPI = useCallback( async (address, token) => {
         try {
-            delete axios.defaults.headers.common["x-auth-token"];
+            delete axios.defaults.headers.common["Authorization"];
             const { data } = await axios.get(getPosition(address));
-            axios.defaults.headers.common["x-auth-token"] = token;
+            axios.defaults.headers.common["Authorization"] = "Bearer " + token;
             setData(data);
             setLat(data.results['0'].geometry.location.lat);
             setLng(data.results['0'].geometry.location.lng);

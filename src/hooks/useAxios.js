@@ -8,7 +8,7 @@ const useAxios = () => {
   const { token } = useUser();
 
   useEffect(() => {
-    axios.defaults.headers.common["x-auth-token"] = token;
+    axios.defaults.headers.common["Authorization"] = "Bearer " + token;
     const requestInterceptor = axios.interceptors.request.use((data) => {
       return Promise.resolve(data);
     }, null);

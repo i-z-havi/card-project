@@ -12,9 +12,12 @@ export default function UserProvider({children}) {
   const [user, setUser]=useState(getUser());
   const [token, setToken]=useState(getToken());
 
-  useEffect(()=>{
-  if (!user) {setUser(getUser())};
-  },[user])
+  useEffect(() => {
+    if (!user) {
+      const userFromLocalStorage = getUser();
+      setUser(userFromLocalStorage);
+    }
+  }, [user]);
 
   const value = useMemo(
     () => ({ user, setUser, token, setToken }),

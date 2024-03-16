@@ -8,10 +8,14 @@ import {
 import { useUser } from "../providers/UserProvider";
 import { useNavigate } from "react-router-dom";
 import ROUTES from "../../routes/routesModel";
-import { getUserData, login, signup, updateUser } from "../services/userApiService";
+import {
+  getUserData,
+  login,
+  signup,
+  updateUser,
+} from "../services/userApiService";
 import normalizeUser from "../helpers/normalization/normalizeUser";
 import { useSnack } from "../../providers/SnackBarProvider";
-
 
 const useUsers = () => {
   const [isLoading, setLoading] = useState(true);
@@ -31,18 +35,21 @@ const useUsers = () => {
     [setUser]
   );
 
-  const handleLogin = useCallback(async (user) => {
-    try {
-      const token = await login(user);
-      setTokenInLocalStorage(token);
-      setToken(token);
-      const userFromLocalStorage = getUser();
-      requestStatus(false, null, userFromLocalStorage);
-      navigate(ROUTES.CARDS);
-    } catch (error) {
-      requestStatus(false, error, null);
-    }
-  }, [navigate,requestStatus,setToken]);
+  const handleLogin = useCallback(
+    async (user) => {
+      try {
+        const token = await login(user);
+        setTokenInLocalStorage(token);
+        setToken(token);
+        const userFromLocalStorage = getUser();
+        requestStatus(false, null, userFromLocalStorage);
+        navigate(ROUTES.CARDS);
+      } catch (error) {
+        requestStatus(false, error, null);
+      }
+    },
+    [navigate, requestStatus, setToken]
+  );
 
   const handleSignup = useCallback(
     async (userFromTheClient) => {
@@ -60,29 +67,31 @@ const useUsers = () => {
     [handleLogin, requestStatus]
   );
 
-
-  const handleGetUser = useCallback(async () => {
+  const handleGetUser = useCallback(async (id) => {
     try {
-      setLoading(true);
-      const user = await getUserData();
-      requestStatus(false, null, user);
-      return user;
+      const userData = await getUserData(id);
+      setLoading(false);
+      setError(null);
+      return userData;
     } catch (error) {
-      requestStatus(false, error, null);
+      setLoading(false);
+      setError(error);
     }
-  }, [requestStatus]);
+  }, []);
 
-  const handleUpdateUser = useCallback(async (updatedUser) => {
-    try {
-      setLoading(true);
-      const user = await updateUser(updatedUser.user_id, updatedUser);
-      requestStatus(false, null, user);
-      snack("success", "The user has been successfully updated");
-    } catch (error) {
-      requestStatus(false, error, null);
-    }
-  }, [requestStatus,snack]);
-
+  const handleUpdateUser = useCallback(
+    async (updatedUser) => {
+      try {
+        setLoading(true);
+        const user = await updateUser(updatedUser.user_id, updatedUser);
+        requestStatus(false, null, user);
+        snack("success", "The user has been successfully updated");
+      } catch (error) {
+        requestStatus(false, error, null);
+      }
+    },
+    [requestStatus, snack]
+  );
 
   const handleLogout = useCallback(() => {
     removeToken();
@@ -94,15 +103,13 @@ const useUsers = () => {
     [isLoading, error, user]
   );
 
-
-
   return {
     value,
     handleLogin,
     handleLogout,
     handleSignup,
     handleGetUser,
-    handleUpdateUser
+    handleUpdateUser,
   };
 };
 

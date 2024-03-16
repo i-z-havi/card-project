@@ -22,9 +22,8 @@ export default function CreateCard() {
     rest.onSubmit();
     navigate(ROUTES.CARDS)
   }
-  if (!user) return <Navigate replace to={ROUTES.CARDS}/>
-  if(!user.isBusiness||user.isAdmin) return<Navigate replace to={ROUTES.CARDS}/>
-  
+
+  if(!user.isBusiness||!user.isAdmin) return<Navigate replace to={ROUTES.CARDS}/>
 
   return (
     <Container
