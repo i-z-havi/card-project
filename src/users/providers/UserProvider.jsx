@@ -6,12 +6,13 @@ import { getToken, getUser } from '../services/localStorageService';
 import { useMemo } from 'react';
 import { node } from 'prop-types';
 
-const UserContext=createContext();
-    
-export default function UserProvider({children}) {
-  const [user, setUser]=useState(getUser());
-  const [token, setToken]=useState(getToken());
+const UserContext = createContext();
 
+export default function UserProvider({ children }) {
+  const [user, setUser] = useState(getUser());
+  const [token, setToken] = useState(getToken());
+
+  //on first load and on setUser, get 
   useEffect(() => {
     if (!user) {
       const userFromLocalStorage = getUser();
@@ -31,13 +32,13 @@ export default function UserProvider({children}) {
   )
 }
 
-  export const useUser = () => {
-    const context = useContext(UserContext);
-    if (!context) throw new Error("useUser must be used within a NameProvider");
-    return context;
-  };
-  
-  UserProvider.propTypes = {
-    children: node.isRequired,
-  };
-  
+export const useUser = () => {
+  const context = useContext(UserContext);
+  if (!context) throw new Error("useUser must be used within a NameProvider");
+  return context;
+};
+
+UserProvider.propTypes = {
+  children: node.isRequired,
+};
+
